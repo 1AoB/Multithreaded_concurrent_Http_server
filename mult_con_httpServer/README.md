@@ -34,7 +34,11 @@ pclient_sock = (int *)malloc(sizeof(int));
 
 pthread_create(&id, NULL, do_http_request, (void *)pclient_sock);
 ```
+# 截取某个网站
+```bash
+curl -L https://www.taobao.com -o ./html_docs/taobao.html
 
+```
 # 运行过程服务器打印的信息
 当访问到服务器不存在的网页时：
 ```
