@@ -31,7 +31,7 @@ void inner_error(int client_sock);
 
 void unimplemented(int client_sock); // 500
 
-void bad_request(int client_sock);
+void bad_request(int client_sock);//400
 
 int main(void)
 {
