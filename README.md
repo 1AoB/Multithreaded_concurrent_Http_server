@@ -13,3 +13,7 @@ killall 进程名
 或者
 kill -9 进程号
 ```
+
+# 关于文件的概念
+![image](https://github.com/1AoB/Multithreaded_concurrent_Http_server/assets/78208268/c8ae6798-e316-4125-bce4-d2b2c7b5324d)
+
