@@ -10,9 +10,32 @@
 ```
 再次强调:如果你要用**80端口**,必须**在root超级用户下**运行代码,否则不可使用,普通用户一般用的是>1023的端口
 
+# 创建子线程
+```c
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
+                                  void *(*start_routine) (void *), void *arg);
+1. thread:直接初始化一个pthread_t thread_id;它不用做任何初始化,直接&thread_id放进去即可;它的作用是标识当前线程的id,相当于当前线程的身份证
+2. attr:置为NULL即可
+3. start_routine:第三个参数是返回值为void*的函数
+4. arg: 传递给start_routine函数的参数。它可以是任何类型的指针，只要将它强制转换为void*类型即可。
+```
+```c
+eg:
+void *do_http_request(void *pclient_sock);//具体代码参考minihttp版本2.c
 
+int client_sock;
+client_sock = accept(sock, (struct sockaddr *)&client, &client_addr_len);
 
+pthread_t id;
+int *pclient_sock = NULL;
 
+pclient_sock = (int *)malloc(sizeof(int));
+*pclient_sock = client_sock;
+
+pthread_create(&id, NULL, do_http_request, (void *)pclient_sock);
+```
+
+# 运行过程服务器打印的信息
 当访问到服务器不存在的网页时：
 ```
 等待客户端的连接
